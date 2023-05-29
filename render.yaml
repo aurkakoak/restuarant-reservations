@@ -22,7 +22,7 @@ services:
       mountPath: /usr/src/app
       sizeGB: 1
 
-cronJobs:
+cron:
   - name: send-reservations-email
     schedule: '0 0 * * *'
     command: 'node sendReservations.js'
