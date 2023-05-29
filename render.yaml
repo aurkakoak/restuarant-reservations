@@ -24,5 +24,5 @@ services:
   - type: cron
     name: restaurant-reservations-email
     schedule: '0 0 * * *'
-    command: 'node sendReservations.js'
+    startCommand: 'node sendReservations.js'
     env: node
