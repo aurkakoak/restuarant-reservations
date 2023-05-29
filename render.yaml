@@ -1,7 +1,7 @@
 databases:
   - name: reservations-db
     databaseName: reservations
-    user: postgres
+    user: rr
 
 services:
   - type: web
