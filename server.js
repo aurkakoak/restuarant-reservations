@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-
 const app = express();
 const port = 3000 || process.env.PORT;
 
@@ -17,9 +16,8 @@ app.get(['/', '/health-check'], (req, res) => {
 })
 
 
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+let server = app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
 });
 
-module.exports = app;
+module.exports = {app, server};
