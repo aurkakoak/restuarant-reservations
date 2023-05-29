@@ -21,6 +21,11 @@ services:
       name: restaurant-reservations-api-disk
       mountPath: /usr/src/app
       sizeGB: 1
+  - type: cron
+    name: restaurant-reservations-email
+    schedule: '0 0 * * *'
+    command: 'node sendReservations.js'
+    env: node
 
 cron:
   - name: send-reservations-email
