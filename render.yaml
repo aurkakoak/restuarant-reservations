@@ -1,0 +1,30 @@
+databases:
+  - name: reservations-db
+    databaseName: reservations
+    user: postgres
+
+services:
+  - type: web
+    name: restaurant-reservations-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: reservations-db
+          property: connectionString
+    healthCheckPath: /health-check
+    disk:
+      name: restaurant-reservations-api-disk
+      mountPath: /usr/src/app
+      sizeGB: 1
+
+cronJobs:
+  - name: send-reservations-email
+    schedule: '0 0 * * *'
+    command: 'node sendReservations.js'
+    service:
+      name: restaurant-reservations-api
