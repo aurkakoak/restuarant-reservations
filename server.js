@@ -11,6 +11,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+app.get('/', (req, res) => {
+  return res.status(200).json({ message: 'Welcome to the restaurant-reservations' });
+})
 const reservationSchema = Joi.object({
     customer_name: Joi.string().required(),
     restaurant_name: Joi.string().required(),
