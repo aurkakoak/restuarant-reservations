@@ -26,10 +26,3 @@ services:
     schedule: '0 0 * * *'
     command: 'node sendReservations.js'
     env: node
-
-cron:
-  - name: send-reservations-email
-    schedule: '0 0 * * *'
-    command: 'node sendReservations.js'
-    service:
-      name: restaurant-reservations-api
