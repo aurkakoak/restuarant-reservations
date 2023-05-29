@@ -7,7 +7,7 @@ services:
   - type: web
     name: restaurant-reservations-api
     env: node
-    buildCommand: npm install
+    buildCommand: npm build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
